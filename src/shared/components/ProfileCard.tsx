@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import Image from 'next/image';
 import { Save, X } from 'lucide-react';
 import { authApi } from '@/shared/api/auth';
 import { useUserProfileWithAddress } from '@/shared/hooks/useUserProfileWithAddress';
@@ -19,6 +20,7 @@ interface ProfileCardProps {
 const ProfileCard: React.FC<ProfileCardProps> = () => {
   const queryClient = useQueryClient();
   const [isEditing, setIsEditing] = useState(false);
+  const [imageError, setImageError] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -44,6 +46,11 @@ const ProfileCard: React.FC<ProfileCardProps> = () => {
   // Fetch user profile data with address from localStorage
   const { data: userProfile, isLoading: isProfileLoading } =
     useUserProfileWithAddress();
+    
+  // Reset image error when source changes
+  useEffect(() => {
+    setImageError(false);
+  }, [profileImagePreview, userProfile?.profilePicture]);
 
   // Update profile mutation (without profilePicture since backend doesn't support it)
   const updateProfileMutation = useMutation({
@@ -75,19 +82,21 @@ const ProfileCard: React.FC<ProfileCardProps> = () => {
   });
 
   // Initialize form data when profile loads (only once)
-  if (userProfile && !formDataInitialized.current) {
-    setFormData({
-      name: userProfile.name || '',
-      email: userProfile.email || '',
-      phone: userProfile.phone || '',
-      profilePicture:
-        profilePictureData.profilePicture || userProfile.profilePicture || '',
-    });
-    setProfileImagePreview(
-      profilePictureData.profilePicture || userProfile.profilePicture || null
-    );
-    formDataInitialized.current = true;
-  }
+  useEffect(() => {
+    if (userProfile && !formDataInitialized.current) {
+      setFormData({
+        name: userProfile.name || '',
+        email: userProfile.email || '',
+        phone: userProfile.phone || '',
+        profilePicture:
+          profilePictureData.profilePicture || userProfile.profilePicture || '',
+      });
+      setProfileImagePreview(
+        profilePictureData.profilePicture || userProfile.profilePicture || null
+      );
+      formDataInitialized.current = true;
+    }
+  }, [userProfile, profilePictureData.profilePicture]);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -189,21 +198,14 @@ const ProfileCard: React.FC<ProfileCardProps> = () => {
         <div className='flex flex-col items-start gap-2 w-[329px] md:w-[484px] h-[172px] md:h-[190px] flex-none'>
           {/* User Avatar - Ellipse 3 */}
           <div className='w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center flex-none relative overflow-hidden'>
-            {profileImagePreview || userProfile?.profilePicture ? (
-              <img
-                src={profileImagePreview || userProfile?.profilePicture}
+            {(profileImagePreview || userProfile?.profilePicture) && !imageError ? (
+              <Image
+                src={profileImagePreview || userProfile?.profilePicture || ''}
                 alt='Profile'
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  borderRadius: '50%',
-                }}
-                onError={(e) => {
-                  // Fallback to initials if image fails to load
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                }}
+                fill
+                className='object-cover rounded-full'
+                onError={() => setImageError(true)}
+                unoptimized
               />
             ) : (
               <span

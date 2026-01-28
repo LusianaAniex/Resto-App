@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import type { RootState } from '@/shared/store/store';
 import ShoppingBagIcon from '@/assets/images/shoppingbag-icon.svg';
@@ -64,12 +65,11 @@ const CheckoutBar: React.FC<CheckoutBarProps> = ({ onCheckout }) => {
               position: 'relative',
             }}
           >
-            <img
+            <Image
               src={ShoppingBagIcon}
               alt='Shopping Bag'
+              fill
               style={{
-                width: '20px',
-                height: '20px',
                 filter:
                   'brightness(0) saturate(100%) invert(8%) sepia(5%) saturate(2000%) hue-rotate(200deg) brightness(95%) contrast(95%)',
               }}

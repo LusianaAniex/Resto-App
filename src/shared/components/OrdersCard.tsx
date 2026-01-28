@@ -11,9 +11,28 @@ import {
 import { useMenuImages } from '@/shared/hooks/useMenuImages';
 import { useAuth } from '@/shared/hooks/useAuth';
 import ReviewModal from './ReviewModal';
-import restaurantIcon from '/restaurant-icon.png';
+import restaurantIcon from '../../assets/images/restaurant-icon.png';
 import type { RootState } from '@/shared/store/store';
 import type { Order } from '@/features/orders/ordersSlice';
+import Image from 'next/image';
+
+const OrderImage = ({ src, alt }: { src: string; alt: string }) => {
+  const [error, setError] = useState(false);
+
+  if (error) return null;
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      className='object-cover rounded-xl relative z-20'
+      onError={() => setError(true)}
+      sizes="(max-width: 768px) 64px, 80px"
+      unoptimized={src.startsWith('data:')}
+    />
+  );
+};
 
 const OrdersCard = () => {
   const router = useRouter();
@@ -486,14 +505,12 @@ const OrdersCard = () => {
                 {/* Restaurant Header - Frame 49 */}
                 <div className='flex flex-row items-center p-0 gap-2 w-auto h-8'>
                   {/* Restaurant Logo */}
-                  <div className='w-8 h-8 bg-transparent rounded-lg flex items-center justify-center overflow-hidden'>
-                    <img
-                      src={restaurantIcon.src}
+                  <div className='relative w-8 h-8 bg-transparent rounded-lg flex items-center justify-center overflow-hidden'>
+                    <Image
+                      src={restaurantIcon}
                       alt={order.restaurantName}
-                      className='w-full h-full object-cover rounded-lg'
-                      onError={() => {
-                        // Restaurant logo failed to load
-                      }}
+                      fill
+                      className='object-cover rounded-lg'
                     />
                   </div>
                   {/* Restaurant Name */}
@@ -519,19 +536,9 @@ const OrdersCard = () => {
 
                         {/* Image - overlays placeholder when loaded successfully */}
                         {order.items[0]?.image && (
-                          <img
+                          <OrderImage
                             src={order.items[0].image}
                             alt={order.items[0]?.name || 'Food Item'}
-                            className='w-full h-full object-cover rounded-xl relative z-20'
-                            onLoad={() => {
-                              // Image loaded successfully
-                            }}
-                            onError={(e) => {
-                              // Image failed to load
-                              // Hide the image to show placeholder
-                              const target = e.target as HTMLImageElement;
-                              target.style.display = 'none';
-                            }}
                           />
                         )}
                       </div>

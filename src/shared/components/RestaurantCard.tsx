@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { Star } from 'lucide-react';
 import { Card } from '@/shared/ui/card';
 import type { Restaurant } from '@/shared/types';
@@ -19,6 +20,17 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
   userLocation: propUserLocation,
 }) => {
   const router = useRouter();
+  const [imgSrc, setImgSrc] = useState<string | typeof restaurantPlaceholder>(
+    restaurant.images?.[0] || restaurant.logo || restaurantPlaceholder
+  );
+
+  useEffect(() => {
+    const newSrc =
+      restaurant.images?.[0] || restaurant.logo || restaurantPlaceholder;
+    if (imgSrc !== newSrc) {
+       setImgSrc(newSrc);
+    }
+  }, [restaurant, imgSrc]);
 
   // Use geolocation hook to get user's current location
   const { latitude, longitude } = useGeolocation();
@@ -37,43 +49,29 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
       router.push(`/restaurants/${restaurant.id}`);
     }
   };
+
+  const handleError = () => {
+      if (imgSrc === restaurant.images?.[0] && restaurant.logo) {
+          setImgSrc(restaurant.logo);
+      } else {
+          setImgSrc(restaurantPlaceholder);
+      }
+  };
+
   return (
     <Card
       className='flex flex-row items-center p-3 md:p-4 gap-2 md:gap-3 w-full md:w-[370px] h-[114px] md:h-[152px] bg-white shadow-[0px_0px_20px_rgba(203,202,202,0.25)] rounded-2xl flex-none order-0 flex-grow-0 cursor-pointer transition-all duration-200 border-none hover:shadow-[0px_0px_25px_rgba(203,202,202,0.35)]'
       onClick={handleClick}
     >
       {/* Restaurant Image - Rectangle 3 */}
-      <div className='w-[90px] h-[90px] md:w-[120px] md:h-[120px] rounded-xl flex-none order-0 flex-grow-0 overflow-hidden bg-gray-100'>
-        <img
-          src={
-            restaurant.images?.[0] ||
-            restaurant.logo ||
-            restaurantPlaceholder.src
-          }
+      <div className='relative w-[90px] h-[90px] md:w-[120px] md:h-[120px] rounded-xl flex-none order-0 flex-grow-0 overflow-hidden bg-gray-100'>
+        <Image
+          src={imgSrc}
           alt={restaurant.name}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-          }}
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            const currentSrc = target.src;
-
-            // Try fallback chain: images[0] -> logo -> placeholder
-            if (currentSrc === restaurant.images?.[0]) {
-              // Try logo if first image fails
-              target.src =
-                restaurant.logo ||
-                restaurantPlaceholder.src;
-            } else if (currentSrc === restaurant.logo) {
-              // Try placeholder if logo fails
-              target.src = restaurantPlaceholder.src;
-            } else {
-              // Final fallback to placeholder
-              target.src = restaurantPlaceholder.src;
-            }
-          }}
+          fill
+          className='object-cover'
+          onError={handleError}
+          sizes="(max-width: 768px) 90px, 120px"
         />
       </div>
 

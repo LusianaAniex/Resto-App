@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Star, Edit3, Trash2 } from 'lucide-react';
 import type { Review } from '../types';
 import EditReviewModal from '../components/EditReviewModal';
@@ -109,16 +110,14 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
       {/* Review Header */}
       <div className='flex items-start gap-3 mb-4 h-16 md:h-16'>
         {/* User Avatar */}
-        <div className='w-12 h-12 md:w-16 md:h-16 bg-gray-300 rounded-full overflow-hidden flex-shrink-0'>
+        <div className='relative w-12 h-12 md:w-16 md:h-16 bg-gray-300 rounded-full overflow-hidden flex-shrink-0'>
           {getUserAvatar() ? (
-            <img
-              src={getUserAvatar() || undefined}
+            <Image
+              src={getUserAvatar() || ''}
               alt={getUserName()}
-              className='w-full h-full object-cover'
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-              }}
+              fill
+              className='object-cover'
+              unoptimized
             />
           ) : getUserName() ? (
             <div className='w-full h-full bg-gray-300 flex items-center justify-center'>

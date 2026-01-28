@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import redLogo from '@/assets/images/red-logo.png';
 import facebookIcon from '@/assets/images/facebook-icon.svg';
 import instagramIcon from '@/assets/images/instagram-icon.svg';
@@ -51,11 +52,15 @@ const Footer: React.FC<FooterProps> = () => {
           {/* Company Info */}
           <div className='space-y-6 md:space-y-10'>
             <div className='flex items-center gap-4'>
-              <img
-                src={redLogo.src}
-                alt='Foody Logo'
-                className='w-10 h-10 md:w-10 md:h-10'
-              />
+              <div className="relative w-10 h-10 md:w-10 md:h-10">
+                 <Image
+                  src={redLogo}
+                  alt='Foody Logo'
+                  fill
+                  className='object-contain'
+                  sizes="40px"
+                />
+              </div>
               <span className='text-2xl md:text-display-md text-white font-nunito font-extrabold leading-[42px]'>
                 Foody
               </span>
@@ -78,14 +83,12 @@ const Footer: React.FC<FooterProps> = () => {
                   rel='noopener noreferrer'
                   className='w-10 h-10 border border-[#252B37] rounded-full flex items-center justify-center hover:bg-gray-800 cursor-pointer transition-colors'
                 >
-                  <img
-                    src={facebookIcon.src}
+                  <Image
+                    src={facebookIcon}
                     alt='Facebook'
+                    width={20}
+                    height={20}
                     className='w-5 h-5'
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                    }}
                   />
                 </a>
 
@@ -96,14 +99,12 @@ const Footer: React.FC<FooterProps> = () => {
                   rel='noopener noreferrer'
                   className='w-10 h-10 border border-[#252B37] rounded-full flex items-center justify-center hover:bg-gray-800 cursor-pointer transition-colors'
                 >
-                  <img
-                    src={instagramIcon.src}
+                  <Image
+                    src={instagramIcon}
                     alt='Instagram'
+                    width={20}
+                    height={20}
                     className='w-5 h-5'
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                    }}
                   />
                 </a>
 
@@ -114,14 +115,12 @@ const Footer: React.FC<FooterProps> = () => {
                   rel='noopener noreferrer'
                   className='w-10 h-10 border border-[#252B37] rounded-full flex items-center justify-center hover:bg-gray-800 cursor-pointer transition-colors'
                 >
-                  <img
-                    src={linkedinIcon.src}
+                  <Image
+                    src={linkedinIcon}
                     alt='LinkedIn'
+                    width={20}
+                    height={20}
                     className='w-5 h-5'
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                    }}
                   />
                 </a>
 
@@ -132,14 +131,12 @@ const Footer: React.FC<FooterProps> = () => {
                   rel='noopener noreferrer'
                   className='w-10 h-10 border border-[#252B37] rounded-full flex items-center justify-center hover:bg-gray-800 cursor-pointer transition-colors'
                 >
-                  <img
-                    src={tiktokIcon.src}
+                  <Image
+                    src={tiktokIcon}
                     alt='TikTok'
+                    width={20}
+                    height={20}
                     className='w-5 h-5'
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                    }}
                   />
                 </a>
               </div>

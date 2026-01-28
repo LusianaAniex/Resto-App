@@ -296,7 +296,7 @@ const HomePage: React.FC = () => {
   ]);
 
   return (
-    <div className='bg-white font-nunito'>
+    <div className='font-nunito'>
       {/* Hero Section with Search */}
       <HeroSection
         searchQuery={searchQuery}

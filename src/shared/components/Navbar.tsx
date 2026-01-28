@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import type { RootState } from '@/shared/store/store';
 import { useAuth } from '@/shared/hooks/useAuth';
@@ -91,9 +92,9 @@ const Navbar: React.FC = () => {
     <>
       {/* Main Navbar */}
       <div
-        className={`navbar-fixed flex items-center justify-between w-full box-border min-w-[320px] transition-all duration-200 ${
+        className={`fixed top-0 left-0 right-0 z-50 navbar-fixed flex items-center justify-between w-full box-border min-w-[320px] transition-all duration-200 ${
           isProfilePage || isScrolled
-            ? 'bg-white shadow-[0px_0px_20px_rgba(203,202,202,0.25)]'
+            ? 'md:bg-white/80 md:backdrop-blur-md bg-transparent shadow-[0px_0px_20px_rgba(203,202,202,0.25)]'
             : 'bg-transparent'
         } h-16 md:h-20 px-4 md:px-[clamp(16px,5vw,120px)]`}
       >
@@ -103,11 +104,16 @@ const Navbar: React.FC = () => {
           onClick={handleLogoClick}
         >
           {/* Logo */}
-          <img
-            src={pathname === '/' && !isScrolled ? whiteLogo.src : redLogo.src}
-            alt='Foody Logo'
-            className='w-10 h-10 md:w-[clamp(32px,4vw,42px)] md:h-[clamp(32px,4vw,42px)] flex-none order-0 flex-grow-0'
-          />
+          <div className="relative w-10 h-10 md:w-[clamp(32px,4vw,42px)] md:h-[clamp(32px,4vw,42px)] flex-none order-0 flex-grow-0">
+            <Image
+              src={pathname === '/' && !isScrolled ? whiteLogo : redLogo}
+              alt='Foody Logo'
+              fill
+              className="object-contain"
+              priority
+              sizes="(max-width: 768px) 40px, 42px"
+            />
+          </div>
           {/* Foody Text - Hidden on mobile, visible on desktop */}
           <span
             className={`hidden md:block font-nunito font-extrabold text-[clamp(20px,3vw,32px)] leading-[42px] whitespace-nowrap flex-none order-1 flex-grow-0 ${
@@ -131,9 +137,11 @@ const Navbar: React.FC = () => {
                 onClick={handleCartClick}
                 className='w-7 h-7 md:w-8 md:h-8 flex-none order-0 flex-grow-0 bg-transparent border-none cursor-pointer relative'
               >
-                <img
+                <Image
                   src={shoppingBagIcon}
                   alt='Shopping Cart'
+                  width={32}
+                  height={32}
                   className={`w-7 h-7 md:w-8 md:h-8 ${
                     pathname === '/' && !isScrolled
                       ? 'filter-none'
@@ -181,12 +189,12 @@ const Navbar: React.FC = () => {
                 }}
               >
                 {/* User Avatar - Ellipse 3 */}
-                <div className='w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden flex-none order-0 flex-grow-0'>
+                <div className='w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden flex-none order-0 flex-grow-0 relative'>
                   {user?.profilePicture ||
                   (typeof window !== 'undefined'
                     ? localStorage.getItem('userProfilePicture') || ''
                     : '') ? (
-                    <img
+                    <Image
                       src={
                         user?.profilePicture ||
                         (typeof window !== 'undefined'
@@ -194,15 +202,10 @@ const Navbar: React.FC = () => {
                           : '')
                       }
                       alt='Profile'
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                      }}
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                      }}
+                      fill
+                      className="object-cover"
+                      loader={({ src }) => src} // Useful if using data URIs or external URLs without configuration
+                      unoptimized={true} // For simplicity with varying external/local user uploads, or remove if configuring domains
                     />
                   ) : user?.name ? (
                     <span

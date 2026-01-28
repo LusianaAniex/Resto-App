@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Image, { StaticImageData } from 'next/image';
 import type { Category } from '@/shared/types';
 
 interface CategorySectionProps {
@@ -8,6 +9,31 @@ interface CategorySectionProps {
   error: Error | null;
   onCategoryClick: (category: { name: string; filter?: string | null }) => void;
 }
+
+const CategoryIcon = ({
+  icon,
+  name,
+}: {
+  icon: string | StaticImageData;
+  name: string;
+}) => {
+  const [error, setError] = useState(false);
+
+  if (error) return null;
+
+  return (
+    <div className='relative w-12 h-12 md:w-16 md:h-16'>
+      <Image
+        src={icon}
+        alt={name}
+        fill
+        className='object-contain'
+        onError={() => setError(true)}
+        sizes="(max-width: 768px) 48px, 64px"
+      />
+    </div>
+  );
+};
 
 const CategorySection: React.FC<CategorySectionProps> = ({
   categories,
@@ -60,15 +86,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({
                       : 'bg-white'
                   }`}
                 >
-                  <img
-                    src={category.icon}
-                    alt={category.name}
-                    className='w-12 h-12 md:w-16 md:h-16 object-contain'
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                    }}
-                  />
+                  <CategoryIcon icon={category.icon} name={category.name} />
                 </div>
                 <span
                   className={`text-sm md:text-lg-bold font-bold text-center leading-7 tracking-[-0.02em] font-nunito ${

@@ -15,14 +15,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     <div className='relative h-[648px] md:hero-height' style={{ zIndex: 1 }}>
       {/* Background Image */}
       <div
-        className='absolute inset-0 bg-cover bg-center bg-no-repeat'
+        className='absolute -top-16 md:-top-20 left-0 right-0 bottom-0 bg-cover bg-no-repeat'
         style={{
           backgroundImage: `url(${bgMainpage.src})`,
+          backgroundPosition: 'center top 64px',
         }}
       />
 
       {/* Gradient Overlay */}
-      <div className='absolute inset-0 hero-gradient' style={{ zIndex: 2 }} />
+      <div className='absolute -top-16 md:-top-20 left-0 right-0 bottom-0 hero-gradient' style={{ zIndex: 2 }} />
 
       {/* Hero Content */}
       <div

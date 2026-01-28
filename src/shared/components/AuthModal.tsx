@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useAuth } from '@/shared/hooks/useAuth';
 import { X, Loader2, Eye, EyeOff } from 'lucide-react';
 import leftImageModal from '@/assets/images/leftimage-modal.png';
@@ -34,6 +35,9 @@ const AuthModal: React.FC<AuthModalProps> = ({
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const { login, register } = useAuth();
+  
+  // ... (rest of the state and handlers remain unchanged, skipping to render for brevity in replacement if allowed, but here I must match context. Since I am replacing the top part to add import, I need to be careful with chunks.
+  // Actually I should split this into chunks.)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -199,14 +203,12 @@ const AuthModal: React.FC<AuthModalProps> = ({
 
         {/* Left Side - Food Image - Hidden on mobile */}
         <div className='hidden md:block absolute left-0 top-0 w-1/2 h-full'>
-          <img
-            src={leftImageModal.src}
+          <Image
+            src={leftImageModal}
             alt='Food'
-            className='w-full h-full object-cover'
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.src = restaurantPlaceholder.src;
-            }}
+            fill
+            className='object-cover'
+            placeholder="blur"
           />
         </div>
 
@@ -225,14 +227,10 @@ const AuthModal: React.FC<AuthModalProps> = ({
           >
             {/* Logo */}
             <div className='flex items-center gap-[11.43px]'>
-              <img
-                src={redLogo.src}
+              <Image
+                src={redLogo}
                 alt='Foody Logo'
                 className='w-8 h-8 md:w-10 md:h-10'
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                }}
               />
               <span className='text-[24.381px] md:text-2xl font-extrabold text-[#0A0D12] leading-8 md:leading-none'>
                 Foody

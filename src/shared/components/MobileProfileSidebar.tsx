@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { MapPin, FileText, LogOut } from 'lucide-react';
+import { MapPin, FileText } from 'lucide-react';
+import logoutLogo from '@/assets/images/logout-logo.svg';
 import { useAuth } from '@/shared/hooks/useAuth';
 import { useUserProfileWithAddress } from '@/shared/hooks/useUserProfileWithAddress';
 import { generateInitials } from '@/shared/utils/imageUpload';
@@ -17,6 +19,7 @@ const MobileProfileSidebar: React.FC<MobileProfileSidebarProps> = ({
   const router = useRouter();
   const { logout } = useAuth();
   const { data: userProfile } = useUserProfileWithAddress();
+  const [imageError, setImageError] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -69,16 +72,15 @@ const MobileProfileSidebar: React.FC<MobileProfileSidebarProps> = ({
             style={{ minHeight: '36px' }}
           >
             {/* Profile Picture - Ellipse 3 */}
-            <div className='w-9 h-9 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden flex-none'>
-              {userProfile?.profilePicture ? (
-                <img
+            <div className='relative w-9 h-9 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden flex-none'>
+              {userProfile?.profilePicture && !imageError ? (
+                <Image
                   src={userProfile.profilePicture}
                   alt='Profile'
-                  className='w-full h-full object-cover rounded-full'
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                  }}
+                  fill
+                  className='object-cover rounded-full'
+                  onError={() => setImageError(true)}
+                  unoptimized
                 />
               ) : (
                 <span className='text-sm font-semibold text-gray-600'>
@@ -128,8 +130,8 @@ const MobileProfileSidebar: React.FC<MobileProfileSidebarProps> = ({
               className='flex items-center gap-2 w-[73px] h-7 cursor-pointer hover:bg-red-50 p-2 rounded-lg transition-colors'
               onClick={handleLogout}
             >
-              <div className='w-5 h-5 flex items-center justify-center flex-none'>
-                <LogOut className='w-5 h-5 text-[#0A0D12]' />
+              <div className='relative w-5 h-5 flex items-center justify-center flex-none'>
+                <Image src={logoutLogo} alt='Logout' width={20} height={20} />
               </div>
               <span className='text-sm font-medium text-[#0A0D12] font-nunito leading-7 flex-none'>
                 Logout

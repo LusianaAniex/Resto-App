@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 import { Button } from '@/shared/ui/button';
 import type { MenuItem } from '@/shared/types';
 
@@ -15,6 +16,8 @@ const MenuCard: React.FC<MenuCardProps> = ({
   onAddToCart,
   onQuantityChange,
 }) => {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <div
       className='flex flex-col items-start p-0 bg-white rounded-2xl overflow-hidden w-[172px] md:w-[285px] min-h-[306px] md:min-h-[379px]'
@@ -25,31 +28,19 @@ const MenuCard: React.FC<MenuCardProps> = ({
     >
       {/* Menu Image - Rectangle 4 */}
       <div
-        className='bg-gray-100 flex items-center justify-center w-[172px] h-[172px] md:w-[285px] md:h-[285px]'
+        className='relative bg-gray-100 flex items-center justify-center w-[172px] h-[172px] md:w-[285px] md:h-[285px]'
         style={{
           borderRadius: '16px 16px 0px 0px',
         }}
       >
-        {menu.image ? (
-          <img
+        {menu.image && !imageError ? (
+          <Image
             src={menu.image}
             alt={menu.name}
-            className='w-full h-full object-cover rounded-t-2xl'
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
-              const parent = target.parentElement;
-              if (parent) {
-                parent.innerHTML = `
-                  <div class="flex flex-col items-center justify-center text-gray-400">
-                    <svg class="w-16 h-16 mb-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="text-sm font-medium">No Image</span>
-                  </div>
-                `;
-              }
-            }}
+            fill
+            className='object-cover rounded-t-2xl'
+            onError={() => setImageError(true)}
+            sizes="(max-width: 768px) 172px, 285px"
           />
         ) : (
           <div className='flex flex-col items-center justify-center text-gray-400'>
