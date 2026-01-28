@@ -91,7 +91,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({
                 </div>
                 <span
                   className={`text-sm md:text-lg-bold font-bold text-center leading-7 tracking-[-0.02em] font-nunito ${
-                    isActive ? 'text-orange-600' : 'text-[#0A0D12]'
+                    isActive ? 'text-orange-600' : 'text-gray-900'
                   }`}
                 >
                   {category.name}

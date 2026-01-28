@@ -46,7 +46,7 @@ const RecommendedSection: React.FC<RecommendedSectionProps> = ({
         {/* Section Header */}
         <div className='flex justify-between items-center mb-4 md:mb-8'>
           <div className='flex items-center gap-4'>
-            <h2 className='text-2xl md:text-display-md text-[#0A0D12] font-nunito font-extrabold leading-9 md:leading-[42px]'>
+            <h2 className='text-2xl md:text-display-md text-gray-900 font-nunito font-extrabold leading-9 md:leading-[42px]'>
               Recommended
             </h2>
             {selectedCategory && (

@@ -61,7 +61,7 @@ const AddressCard: React.FC<AddressCardProps> = () => {
     <>
       {/* Address Title */}
       <h1
-        className='text-2xl md:text-3xl font-extrabold text-[#0A0D12] mb-4 md:mb-6 leading-9 md:leading-tight'
+        className='text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 md:mb-6 leading-9 md:leading-tight'
         style={{ fontFamily: 'Nunito' }}
       >
         Delivery Address
@@ -73,8 +73,8 @@ const AddressCard: React.FC<AddressCardProps> = () => {
         <div className='flex flex-col items-start gap-3 w-[329px] md:w-[484px] h-[172px] md:h-[190px] flex-none'>
           {/* Address Header */}
           <div className='flex items-center gap-3 mb-3'>
-            <MapPin className='w-5 h-5 md:w-6 md:h-6 text-[#0A0D12]' />
-            <h3 className='text-lg md:text-xl font-extrabold text-[#0A0D12] font-nunito leading-7 md:leading-7'>
+            <MapPin className='w-5 h-5 md:w-6 md:h-6 text-gray-900' />
+            <h3 className='text-lg md:text-xl font-extrabold text-gray-900 font-nunito leading-7 md:leading-7'>
               Delivery Address
             </h3>
           </div>
@@ -82,7 +82,7 @@ const AddressCard: React.FC<AddressCardProps> = () => {
           {/* Address Display/Input */}
           <div className='flex flex-col items-start gap-2 w-[329px] md:w-[484px] flex-none'>
             {/* Address Label */}
-            <span className='text-sm font-medium text-[#0A0D12] font-nunito leading-7 flex-none'>
+            <span className='text-sm font-medium text-gray-900 font-nunito leading-7 flex-none'>
               Current Address:
             </span>
 

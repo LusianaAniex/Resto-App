@@ -100,11 +100,11 @@ const Navbar: React.FC = () => {
       >
         {/* Logo - Frame 37 */}
         <div
-          className='flex items-center cursor-pointer flex-shrink-0 min-w-0'
+          className='flex items-center cursor-pointer shrink-0 min-w-0'
           onClick={handleLogoClick}
         >
           {/* Logo */}
-          <div className="relative w-10 h-10 md:w-[clamp(32px,4vw,42px)] md:h-[clamp(32px,4vw,42px)] flex-none order-0 flex-grow-0">
+          <div className="relative w-10 h-10 md:w-[clamp(32px,4vw,42px)] md:h-[clamp(32px,4vw,42px)] flex-none order-0 grow-0">
             <Image
               src={pathname === '/' && !isScrolled ? whiteLogo : redLogo}
               alt='Foody Logo'
@@ -116,7 +116,7 @@ const Navbar: React.FC = () => {
           </div>
           {/* Foody Text - Hidden on mobile, visible on desktop */}
           <span
-            className={`hidden md:block font-nunito font-extrabold text-[clamp(20px,3vw,32px)] leading-[42px] whitespace-nowrap flex-none order-1 flex-grow-0 ${
+            className={`hidden md:block font-nunito font-extrabold text-[clamp(20px,3vw,32px)] leading-[42px] whitespace-nowrap flex-none order-1 grow-0 ${
               pathname === '/'
                 ? isScrolled
                   ? 'text-gray-900'
@@ -129,13 +129,13 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Right side - Frame 38 */}
-        <div className='flex items-center gap-3 md:gap-[clamp(12px,2vw,24px)] h-10 md:h-12 flex-none order-1 flex-grow-0 min-w-0'>
+        <div className='flex items-center gap-3 md:gap-[clamp(12px,2vw,24px)] h-10 md:h-12 flex-none order-1 grow-0 min-w-0'>
           {isAuthenticated ? (
             <>
               {/* Shopping Cart Icon - Bag */}
               <button
                 onClick={handleCartClick}
-                className='w-7 h-7 md:w-8 md:h-8 flex-none order-0 flex-grow-0 bg-transparent border-none cursor-pointer relative'
+                className='w-7 h-7 md:w-8 md:h-8 flex-none order-0 grow-0 bg-transparent border-none cursor-pointer relative'
               >
                 <Image
                   src={shoppingBagIcon}
@@ -178,7 +178,7 @@ const Navbar: React.FC = () => {
 
               {/* User Profile - Frame 36 */}
               <div
-                className='flex items-center gap-2 md:gap-[clamp(8px,1.5vw,16px)] h-10 md:h-12 flex-none order-1 flex-grow-0 cursor-pointer min-w-0'
+                className='flex items-center gap-2 md:gap-[clamp(8px,1.5vw,16px)] h-10 md:h-12 flex-none order-1 grow-0 cursor-pointer min-w-0'
                 onClick={() => {
                   // On mobile, open sidebar; on desktop, navigate to profile
                   if (isMobile) {
@@ -189,7 +189,7 @@ const Navbar: React.FC = () => {
                 }}
               >
                 {/* User Avatar - Ellipse 3 */}
-                <div className='w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden flex-none order-0 flex-grow-0 relative'>
+                <div className='w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden flex-none order-0 grow-0 relative'>
                   {user?.profilePicture ||
                   (typeof window !== 'undefined'
                     ? localStorage.getItem('userProfilePicture') || ''
@@ -203,6 +203,7 @@ const Navbar: React.FC = () => {
                       }
                       alt='Profile'
                       fill
+                      sizes="(max-width: 768px) 40px, 48px"
                       className="object-cover"
                       loader={({ src }) => src} // Useful if using data URIs or external URLs without configuration
                       unoptimized={true} // For simplicity with varying external/local user uploads, or remove if configuring domains
@@ -231,7 +232,7 @@ const Navbar: React.FC = () => {
                 </div>
                 {/* User Name - John Doe - Hidden on mobile */}
                 <span
-                  className={`hidden md:block h-8 font-nunito font-semibold text-[clamp(14px,1.5vw,18px)] leading-8 tracking-[-0.02em] flex-none order-1 flex-grow-0 whitespace-nowrap overflow-hidden text-ellipsis max-w-[120px] ${
+                  className={`hidden md:block h-8 font-nunito font-semibold text-[clamp(14px,1.5vw,18px)] leading-8 tracking-[-0.02em] flex-none order-1 grow-0 whitespace-nowrap overflow-hidden text-ellipsis max-w-[120px] ${
                     pathname === '/'
                       ? isScrolled
                         ? 'text-gray-900'

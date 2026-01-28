@@ -67,7 +67,7 @@ const MenuCard: React.FC<MenuCardProps> = ({
         <div className='flex flex-col items-start w-[91px] md:w-[91px] min-h-[86px] md:min-h-[92px]'>
           {/* Food Name */}
           <div
-            className='text-gray-900 w-[100px] min-h-[56px] md:min-h-[60px] font-nunito font-medium text-sm md:text-base leading-7 md:leading-[30px] tracking-[-0.02em] text-[#0A0D12]'
+            className='text-gray-900 w-[100px] min-h-[56px] md:min-h-[60px] font-nunito font-medium text-sm md:text-base leading-7 md:leading-[30px] tracking-[-0.02em] text-gray-900'
             style={{
               wordWrap: 'break-word',
               overflowWrap: 'break-word',
@@ -79,7 +79,7 @@ const MenuCard: React.FC<MenuCardProps> = ({
           </div>
 
           {/* Price */}
-          <div className='text-gray-900 w-[91px] h-[30px] md:h-[32px] font-nunito font-extrabold text-base md:text-lg leading-[30px] md:leading-[32px] tracking-[-0.02em] text-[#0A0D12]'>
+          <div className='text-gray-900 w-[91px] h-[30px] md:h-[32px] font-nunito font-extrabold text-base md:text-lg leading-[30px] md:leading-[32px] tracking-[-0.02em] text-gray-900'>
             Rp{menu.price.toLocaleString()}
           </div>
         </div>
@@ -99,7 +99,7 @@ const MenuCard: React.FC<MenuCardProps> = ({
             {/* Frame 19 - Minus Button */}
             <button
               onClick={() => onQuantityChange(menu.id, -1)}
-              className='flex flex-row justify-center items-center w-9 h-9 md:w-8 md:h-8 p-1 md:p-1 border border-[#D5D7DA] rounded-full bg-transparent cursor-pointer flex-shrink-0'
+              className='flex flex-row justify-center items-center w-9 h-9 md:w-8 md:h-8 p-1 md:p-1 border border-[#D5D7DA] rounded-full bg-transparent cursor-pointer shrink-0'
               aria-label='Decrease quantity'
             >
               <div className='w-4 h-4 md:w-4 md:h-4 relative flex items-center justify-center'>
@@ -109,14 +109,14 @@ const MenuCard: React.FC<MenuCardProps> = ({
             </button>
 
             {/* Quantity Display */}
-            <div className='min-w-4 h-7 md:h-8 font-nunito font-semibold text-base md:text-base leading-7 md:leading-8 tracking-[-0.02em] text-[#0A0D12] flex items-center justify-center flex-shrink-0'>
+            <div className='min-w-4 h-7 md:h-8 font-nunito font-semibold text-base md:text-base leading-7 md:leading-8 tracking-[-0.02em] text-gray-900 flex items-center justify-center shrink-0'>
               {quantity}
             </div>
 
             {/* Frame 18 - Plus Button */}
             <button
               onClick={() => onQuantityChange(menu.id, 1)}
-              className='flex flex-row items-center justify-center w-9 h-9 md:w-8 md:h-8 p-1 md:p-1 bg-[#C12116] rounded-full border-none cursor-pointer flex-shrink-0'
+              className='flex flex-row items-center justify-center w-9 h-9 md:w-8 md:h-8 p-1 md:p-1 bg-[#C12116] rounded-full border-none cursor-pointer shrink-0'
               aria-label='Increase quantity'
             >
               {/* Plus Icon - Single div with CSS borders */}

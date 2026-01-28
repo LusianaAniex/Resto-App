@@ -51,7 +51,7 @@ const EditReviewModal: React.FC<EditReviewModalProps> = ({
 
   return createPortal(
     <div
-      className='fixed top-0 left-0 w-screen h-screen bg-black/50 flex items-center justify-center z-[9999] p-4'
+      className='fixed top-0 left-0 w-screen h-screen bg-black/50 flex items-center justify-center z-9999 p-4'
       onClick={handleClose}
     >
       <div
@@ -61,7 +61,7 @@ const EditReviewModal: React.FC<EditReviewModalProps> = ({
         {/* Header - Frame 96 */}
         <div className='flex flex-row justify-between items-center px-0 w-full h-9 md:h-9'>
           {/* Edit Review Title */}
-          <div className='font-nunito font-extrabold text-xl md:text-2xl leading-9 md:leading-9 text-[#0A0D12]'>
+          <div className='font-nunito font-extrabold text-xl md:text-2xl leading-9 md:leading-9 text-gray-900'>
             Edit Review
           </div>
 
@@ -77,7 +77,7 @@ const EditReviewModal: React.FC<EditReviewModalProps> = ({
         {/* Rating Section - Frame 97 */}
         <div className='flex flex-col justify-center items-center px-0 w-full h-20 md:h-20'>
           {/* Give Rating Text */}
-          <div className='font-nunito font-extrabold text-base md:text-base leading-8 md:leading-8 text-center text-[#0A0D12] mb-2 w-full'>
+          <div className='font-nunito font-extrabold text-base md:text-base leading-8 md:leading-8 text-center text-gray-900 mb-2 w-full'>
             Give Rating
           </div>
 

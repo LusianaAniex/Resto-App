@@ -332,6 +332,7 @@ const RestaurantDetailPage: React.FC = () => {
                     src={availableImages[currentImageIndex]}
                     alt={restaurant.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, 400px"
                     containerClassName='w-full h-full'
                     className='object-cover rounded-2xl'
                     fallbackText='No Image Available'
@@ -463,7 +464,7 @@ const RestaurantDetailPage: React.FC = () => {
               >
                 {/* Restaurant Logo - Rectangle 3 */}
                 <div
-                  className='rounded-full flex-none order-0 flex-grow-0'
+                  className='rounded-full flex-none order-0 grow-0'
                   style={{ width: '90px', height: '90px' }}
                 >
                   <ImageWithFallback
@@ -483,12 +484,12 @@ const RestaurantDetailPage: React.FC = () => {
 
                 {/* Frame 2 - Restaurant Details */}
                 <div
-                  className='flex flex-col items-start px-0 gap-0.5 flex-none order-1 flex-grow-0'
+                  className='flex flex-col items-start px-0 gap-0.5 flex-none order-1 grow-0'
                   style={{ width: '148px', minHeight: '90px' }}
                 >
                   {/* Restaurant Name - Burger King */}
                   <h1
-                    className='font-nunito font-extrabold text-[#0A0D12] leading-[20px] flex-none order-0 self-stretch flex-grow-0 break-words'
+                    className='font-nunito font-extrabold text-gray-900 leading-[20px] flex-none order-0 self-stretch grow-0 wrap-break-word'
                     style={{
                       fontSize: '16px',
                       width: '148px',
@@ -501,17 +502,17 @@ const RestaurantDetailPage: React.FC = () => {
 
                   {/* Frame 1 - Rating Row */}
                   <div
-                    className='flex flex-row items-center px-0 gap-1 flex-none order-1 self-stretch flex-grow-0 mt-1'
+                    className='flex flex-row items-center px-0 gap-1 flex-none order-1 self-stretch grow-0 mt-1'
                     style={{ width: '148px', height: '28px' }}
                   >
                     {/* Star Icon */}
-                    <div className='w-6 h-6 flex-none order-0 flex-grow-0'>
+                    <div className='w-6 h-6 flex-none order-0 grow-0'>
                       <Star className='w-6 h-6 text-[#FFAB0D] fill-current' />
                     </div>
 
                     {/* Rating Text */}
                     <span
-                      className='font-nunito font-medium text-[#0A0D12] text-center flex-none order-1 flex-grow-0'
+                      className='font-nunito font-medium text-gray-900 text-center flex-none order-1 grow-0'
                       style={{
                         fontSize: '14px',
                         lineHeight: '28px',
@@ -525,12 +526,12 @@ const RestaurantDetailPage: React.FC = () => {
 
                   {/* Frame 7 - Location and Distance Row */}
                   <div
-                    className='flex flex-row items-center px-0 gap-1.5 flex-none order-2 self-stretch flex-grow-0'
+                    className='flex flex-row items-center px-0 gap-1.5 flex-none order-2 self-stretch grow-0'
                     style={{ width: '148px', height: '28px' }}
                   >
                     {/* Location */}
                     <span
-                      className='font-nunito font-normal text-[#0A0D12] flex-none order-0 flex-grow-0'
+                      className='font-nunito font-normal text-gray-900 flex-none order-0 grow-0'
                       style={{
                         fontSize: '14px',
                         lineHeight: '28px',
@@ -544,13 +545,13 @@ const RestaurantDetailPage: React.FC = () => {
 
                     {/* Dot Separator */}
                     <div
-                      className='bg-[#0A0D12] rounded-full flex-none order-1 flex-grow-0'
+                      className='bg-[#0A0D12] rounded-full flex-none order-1 grow-0'
                       style={{ width: '2px', height: '2px' }}
                     ></div>
 
                     {/* Distance */}
                     <span
-                      className='font-nunito font-normal text-[#0A0D12] flex-none order-2 flex-grow-0 whitespace-nowrap'
+                      className='font-nunito font-normal text-gray-900 flex-none order-2 grow-0 whitespace-nowrap'
                       style={{
                         fontSize: '14px',
                         lineHeight: '28px',
@@ -567,11 +568,11 @@ const RestaurantDetailPage: React.FC = () => {
 
               {/* Share Button */}
               <button
-                className='flex flex-row justify-center items-center px-4 py-3 gap-3 mx-auto border border-[#D5D7DA] rounded-full flex-none order-1 flex-grow-0'
+                className='flex flex-row justify-center items-center px-4 py-3 gap-3 mx-auto border border-[#D5D7DA] rounded-full flex-none order-1 grow-0'
                 style={{ width: '44px', height: '44px' }}
                 onClick={handleShare}
               >
-                <Share2 className='w-5 h-5 text-[#0A0D12] flex-none order-0 flex-grow-0' />
+                <Share2 className='w-5 h-5 text-gray-900 flex-none order-0 grow-0' />
               </button>
             </div>
           </div>
@@ -593,6 +594,7 @@ const RestaurantDetailPage: React.FC = () => {
                 }
                 alt={restaurant.name}
                 fill
+                sizes="120px"
                 containerClassName='w-full h-full'
                 className='object-cover'
                 fallbackText='No Logo'
@@ -652,7 +654,7 @@ const RestaurantDetailPage: React.FC = () => {
 
         {/* Menu Section */}
         <div className='mb-4 md:mb-8'>
-          <h2 className='text-2xl md:text-4xl font-extrabold text-[#0A0D12] mb-4 md:mb-6 leading-9 md:leading-none'>
+          <h2 className='text-2xl md:text-4xl font-extrabold text-gray-900 mb-4 md:mb-6 leading-9 md:leading-none'>
             Menu
           </h2>
 
@@ -663,7 +665,7 @@ const RestaurantDetailPage: React.FC = () => {
               className={`px-4 py-2 rounded-full text-sm font-bold ${
                 selectedMenuFilter === 'all'
                   ? 'bg-[#FFECEC] text-[#C12116] border border-[#C12116]'
-                  : 'border border-[#D5D7DA] text-[#0A0D12]'
+                  : 'border border-[#D5D7DA] text-gray-900'
               }`}
             >
               All Menu
@@ -673,7 +675,7 @@ const RestaurantDetailPage: React.FC = () => {
               className={`px-4 py-2 rounded-full text-sm font-semibold ${
                 selectedMenuFilter === 'food'
                   ? 'bg-[#FFECEC] text-[#C12116] border border-[#C12116]'
-                  : 'border border-[#D5D7DA] text-[#0A0D12]'
+                  : 'border border-[#D5D7DA] text-gray-900'
               }`}
             >
               Food
@@ -683,7 +685,7 @@ const RestaurantDetailPage: React.FC = () => {
               className={`px-4 py-2 rounded-full text-sm font-semibold ${
                 selectedMenuFilter === 'drink'
                   ? 'bg-[#FFECEC] text-[#C12116] border border-[#C12116]'
-                  : 'border border-[#D5D7DA] text-[#0A0D12]'
+                  : 'border border-[#D5D7DA] text-gray-900'
               }`}
             >
               Drink
@@ -728,12 +730,12 @@ const RestaurantDetailPage: React.FC = () => {
         {/* Reviews Section */}
         <div className='mb-4 md:mb-8'>
           <div className='flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-1 mb-4 md:mb-6'>
-            <h2 className='text-2xl md:text-4xl font-extrabold text-[#0A0D12] leading-9 md:leading-none'>
+            <h2 className='text-2xl md:text-4xl font-extrabold text-gray-900 leading-9 md:leading-none'>
               Reviews
             </h2>
             <div className='flex items-center gap-1'>
               <Star className='w-6 h-6 md:w-8 md:h-8 text-[#FFAB0D] fill-current' />
-              <span className='text-base md:text-4xl font-extrabold text-[#0A0D12] leading-7 md:leading-none'>
+              <span className='text-base md:text-4xl font-extrabold text-gray-900 leading-7 md:leading-none'>
                 {restaurant.star?.toFixed(1) || 'N/A'} ({displayReviews.length}{' '}
                 Ulasan)
               </span>

@@ -41,7 +41,7 @@ const SidebarProfile = ({
         className='flex flex-row items-center gap-2 w-full h-12 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors'
         onClick={handleShowProfile}
       >
-        <div className='w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0'>
+        <div className='w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden shrink-0'>
           {user?.profilePicture ? (
             <img
               src={user.profilePicture}
@@ -68,7 +68,7 @@ const SidebarProfile = ({
         </div>
         <span
           className={`flex-1 min-h-8 font-nunito font-bold text-base leading-5 tracking-[-0.03em] ${
-            activeCard === 'profile' ? 'text-[#C12116]' : 'text-[#0A0D12]'
+            activeCard === 'profile' ? 'text-[#C12116]' : 'text-gray-900'
           } line-clamp-2`}
         >
           {user?.name || 'User'}
@@ -91,7 +91,7 @@ const SidebarProfile = ({
           />
           <span
             className={`font-nunito font-medium text-base leading-8 tracking-[-0.03em] ${
-              activeCard === 'address' ? 'text-[#C12116]' : 'text-[#0A0D12]'
+              activeCard === 'address' ? 'text-[#C12116]' : 'text-gray-900'
             }`}
           >
             Delivery Address
@@ -109,7 +109,7 @@ const SidebarProfile = ({
           />
           <span
             className={`font-nunito font-medium text-base leading-8 tracking-[-0.03em] ${
-              activeCard === 'orders' ? 'text-[#C12116]' : 'text-[#0A0D12]'
+              activeCard === 'orders' ? 'text-[#C12116]' : 'text-gray-900'
             }`}
           >
             My Orders
@@ -127,7 +127,7 @@ const SidebarProfile = ({
           />
           <span
             className={`font-nunito font-medium text-base leading-8 tracking-[-0.03em] ${
-              isLogoutClicked ? 'text-[#C12116]' : 'text-[#0A0D12]'
+              isLogoutClicked ? 'text-[#C12116]' : 'text-gray-900'
             }`}
           >
             Logout
@@ -163,7 +163,7 @@ const MobileNavigation = ({ activeCard, onCardChange }: MobileNavigationProps) =
           >
             <span className='text-lg'>{tab.icon}</span>
             <span className={`font-nunito text-sm font-medium ${
-              activeCard === tab.id ? 'text-[#C12116]' : 'text-[#0A0D12]'
+              activeCard === tab.id ? 'text-[#C12116]' : 'text-gray-900'
             }`}>
               {tab.label}
             </span>

@@ -77,6 +77,7 @@ const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
         width={width}
         height={height}
         fill={fill}
+        sizes={props.sizes || (fill ? '100vw' : undefined)}
         className={`${className} ${isLoading ? 'invisible' : 'visible'}`}
         onError={handleError}
         onLoad={handleLoad}

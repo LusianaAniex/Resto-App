@@ -6,9 +6,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Check } from 'lucide-react';
 import Image from 'next/image';
 import type { CartItem } from '@/shared/types';
-
-// Constants
-const RED_LOGO = '/red-logo.png';
+import redLogo from '@/assets/images/red-logo.png';
 
 // Types
 interface OrderData {
@@ -62,9 +60,10 @@ const Header = ({ onLogoClick }: HeaderProps) => (
   >
     <div className='w-8 h-8 md:w-10 md:h-10 relative'>
       <Image
-        src={RED_LOGO}
+        src={redLogo}
         alt='Foody Logo'
         fill
+        sizes="(max-width: 768px) 32px, 40px"
         className='object-contain'
         onError={(e) => {
           const target = e.target as HTMLImageElement;
@@ -121,11 +120,11 @@ const SuccessIcon = ({ title, message }: SuccessIconProps) => (
       />
     </div>
 
-    <h2 className='w-[290px] md:w-[388px] h-[24px] md:h-[34px] font-nunito font-extrabold text-base md:text-xl leading-6 md:leading-[34px] text-[#0A0D12] text-center'>
+    <h2 className='w-[290px] md:w-[388px] h-[24px] md:h-[34px] font-nunito font-extrabold text-base md:text-xl leading-6 md:leading-[34px] text-gray-900 text-center'>
       {title}
     </h2>
 
-    <p className='w-[290px] md:w-[388px] h-[20px] md:h-[30px] font-nunito font-normal text-xs md:text-base leading-5 md:leading-[30px] tracking-[-0.02em] text-[#0A0D12] text-center'>
+    <p className='w-[290px] md:w-[388px] h-[20px] md:h-[30px] font-nunito font-normal text-xs md:text-base leading-5 md:leading-[30px] tracking-[-0.02em] text-gray-900 text-center'>
       {message}
     </p>
   </div>
@@ -138,10 +137,10 @@ interface PaymentDetailRowProps {
 
 const PaymentDetailRow = ({ label, value }: PaymentDetailRowProps) => (
   <div className='flex justify-between items-center w-[290px] md:w-[388px] h-6 md:h-[30px] py-1 md:py-2 z-10'>
-    <span className='font-nunito font-medium text-xs md:text-base leading-6 md:leading-[30px] tracking-[-0.03em] text-[#0A0D12]'>
+    <span className='font-nunito font-medium text-xs md:text-base leading-6 md:leading-[30px] tracking-[-0.03em] text-gray-900'>
       {label}
     </span>
-    <span className='font-nunito font-bold text-xs md:text-base leading-6 md:leading-[30px] tracking-[-0.02em] text-[#0A0D12]'>
+    <span className='font-nunito font-bold text-xs md:text-base leading-6 md:leading-[30px] tracking-[-0.02em] text-gray-900'>
       {value}
     </span>
   </div>
@@ -153,10 +152,10 @@ interface TotalRowProps {
 
 const TotalRow = ({ total }: TotalRowProps) => (
   <div className='absolute flex justify-between items-center w-[290px] md:w-[388px] h-7 md:h-8 gap-[100px] md:gap-[135px] z-10 left-3 md:left-5 top-[315px] md:top-[430px]'>
-    <span className='w-[28px] md:w-[41px] h-7 md:h-8 font-nunito font-normal text-sm md:text-lg leading-7 md:leading-8 text-[#0A0D12] text-left'>
+    <span className='w-[28px] md:w-[41px] h-7 md:h-8 font-nunito font-normal text-sm md:text-lg leading-7 md:leading-8 text-gray-900 text-left'>
       Total
     </span>
-    <span className='h-7 md:h-8 font-nunito font-extrabold text-sm md:text-lg leading-7 md:leading-8 tracking-[-0.02em] text-[#0A0D12] text-right'>
+    <span className='h-7 md:h-8 font-nunito font-extrabold text-sm md:text-lg leading-7 md:leading-8 tracking-[-0.02em] text-gray-900 text-right'>
       {total}
     </span>
   </div>

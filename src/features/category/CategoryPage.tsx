@@ -355,23 +355,23 @@ const CategoryPage: React.FC = () => {
         />
 
         <div className='flex flex-col items-start px-0 gap-0.5 flex-1 h-[90px]'>
-          <h3 className='font-nunito font-extrabold text-base leading-[30px] text-[#0A0D12] w-full h-[30px]'>
+          <h3 className='font-nunito font-extrabold text-base leading-[30px] text-gray-900 w-full h-[30px]'>
             {restaurant.name}
           </h3>
 
           <div className='flex flex-row items-center px-0 gap-1 w-full h-7'>
             <Star className='w-6 h-6 text-[#FFAB0D] fill-current' />
-            <span className='font-nunito font-medium text-sm leading-7 text-center text-[#0A0D12] w-[21px] h-7'>
+            <span className='font-nunito font-medium text-sm leading-7 text-center text-gray-900 w-[21px] h-7'>
               {restaurant.star?.toFixed(1) || 'N/A'}
             </span>
           </div>
 
           <div className='flex flex-row items-center px-0 gap-1.5 w-full h-7'>
-            <span className='font-nunito font-normal text-sm leading-7 tracking-[-0.02em] text-[#0A0D12] flex-shrink-0'>
+            <span className='font-nunito font-normal text-sm leading-7 tracking-[-0.02em] text-gray-900 shrink-0'>
               {restaurant.place}
             </span>
-            <div className='w-0.5 h-0.5 bg-[#0A0D12] rounded-full flex-shrink-0'></div>
-            <span className='font-nunito font-normal text-sm leading-7 tracking-[-0.02em] text-[#0A0D12] flex-shrink-0 whitespace-nowrap'>
+            <div className='w-0.5 h-0.5 bg-[#0A0D12] rounded-full shrink-0'></div>
+            <span className='font-nunito font-normal text-sm leading-7 tracking-[-0.02em] text-gray-900 shrink-0 whitespace-nowrap'>
               {distance ? formatDistance(distance) : 'N/A'}
             </span>
           </div>
@@ -455,7 +455,7 @@ const CategoryPage: React.FC = () => {
       <div className='max-w-7xl mx-auto px-4 md:px-30 py-4 md:py-8'>
         {/* Mobile Layout */}
         <div className='md:hidden flex flex-col items-start px-0 gap-4 w-full max-w-[361px] mx-auto'>
-          <h1 className='font-nunito font-extrabold text-2xl leading-9 text-[#0A0D12] w-full'>
+          <h1 className='font-nunito font-extrabold text-2xl leading-9 text-gray-900 w-full'>
             {getCategoryTitle()}
           </h1>
 
@@ -463,8 +463,8 @@ const CategoryPage: React.FC = () => {
             onClick={() => setIsMobileSidebarOpen(true)}
             className='flex flex-row justify-between items-center bg-white rounded-xl shadow-[0px_0px_20px_rgba(203,202,202,0.25)] cursor-pointer hover:bg-gray-50 transition-colors w-[361px] h-[52px] p-3'
           >
-            <div className='font-nunito font-extrabold text-sm leading-7 text-[#0A0D12]'>Filter</div>
-            <ListFilter className='w-5 h-5 text-[#0A0D12]' />
+            <div className='font-nunito font-extrabold text-sm leading-7 text-gray-900'>Filter</div>
+            <ListFilter className='w-5 h-5 text-gray-900' />
           </button>
 
           <div className='flex flex-col items-start px-0 gap-4 w-full'>
@@ -564,11 +564,11 @@ const CategoryPage: React.FC = () => {
       {/* Mobile Sidebar Overlay */}
       {isMobileSidebarOpen && (
         <div
-          className='fixed inset-0 bg-black bg-opacity-50 z-[999999] md:hidden'
+          className='fixed inset-0 bg-black bg-opacity-50 z-999999 md:hidden'
           onClick={() => setIsMobileSidebarOpen(false)}
         >
           <div
-            className='fixed left-0 top-0 h-full w-72 bg-white shadow-xl transform transition-transform duration-300 ease-in-out z-[999999]'
+            className='fixed left-0 top-0 h-full w-72 bg-white shadow-xl transform transition-transform duration-300 ease-in-out z-999999'
             onClick={(e) => e.stopPropagation()}
           >
             <div className='flex items-center p-4 border-b border-gray-200'>
@@ -577,7 +577,7 @@ const CategoryPage: React.FC = () => {
 
             <button
               onClick={() => setIsMobileSidebarOpen(false)}
-              className='absolute flex flex-row justify-center items-center bg-white rounded-full shadow-lg z-[999999] left-[306px] top-4 p-2 w-8 h-8'
+              className='absolute flex flex-row justify-center items-center bg-white rounded-full shadow-lg z-999999 left-[306px] top-4 p-2 w-8 h-8'
             >
               <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                 <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />

@@ -345,7 +345,7 @@ const OrdersCard = () => {
   return (
     <>
       {/* My Orders Title */}
-      <h1 className='text-2xl md:text-3xl font-extrabold text-[#0A0D12] mb-4 md:mb-6 leading-9 md:leading-tight font-nunito'>
+      <h1 className='text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 md:mb-6 leading-9 md:leading-tight font-nunito'>
         My Orders
       </h1>
 
@@ -379,7 +379,7 @@ const OrdersCard = () => {
           style={{ userSelect: 'none' }}
         >
           {/* Status Label */}
-          <span className='text-base md:text-lg font-bold text-[#0A0D12] font-nunito leading-8 tracking-[-0.03em] flex-none'>
+          <span className='text-base md:text-lg font-bold text-gray-900 font-nunito leading-8 tracking-[-0.03em] flex-none'>
             Status
           </span>
 
@@ -392,7 +392,7 @@ const OrdersCard = () => {
                   setStatusFilter(filter.key);
                 }
               }}
-              className={`flex flex-row justify-center items-center px-4 py-2 gap-2 h-8 md:h-10 min-w-fit whitespace-nowrap rounded-full transition-all duration-200 flex-shrink-0 ${
+              className={`flex flex-row justify-center items-center px-4 py-2 gap-2 h-8 md:h-10 min-w-fit whitespace-nowrap rounded-full transition-all duration-200 shrink-0 ${
                 isDragging ? 'cursor-grabbing' : 'cursor-pointer'
               } ${
                 statusFilter === filter.key
@@ -404,7 +404,7 @@ const OrdersCard = () => {
                 className={`font-nunito text-sm md:text-base leading-tight tracking-[-0.02em] flex items-center justify-center whitespace-nowrap text-center ${
                   statusFilter === filter.key
                     ? 'font-bold text-[#C12116]'
-                    : 'font-semibold text-[#0A0D12]'
+                    : 'font-semibold text-gray-900'
                 }`}
               >
                 {filter.label}
@@ -524,7 +524,7 @@ const OrdersCard = () => {
                   {/* Restaurant Name */}
                   <span
                     onClick={() => handleRestaurantClick(order.restaurantId)}
-                    className='text-base md:text-lg font-bold text-[#0A0D12] font-nunito leading-8 tracking-[-0.03em] cursor-pointer transition-colors hover:text-[#C12116]'
+                    className='text-base md:text-lg font-bold text-gray-900 font-nunito leading-8 tracking-[-0.03em] cursor-pointer transition-colors hover:text-[#C12116]'
                   >
                     {order.restaurantName}
                   </span>
@@ -555,11 +555,11 @@ const OrdersCard = () => {
                     {/* Item Info - Frame 12 */}
                     <div className='flex flex-col items-start p-0 flex-1 min-h-[60px] justify-center'>
                       {/* Item Name */}
-                      <span className='text-sm md:text-base font-medium text-[#0A0D12] font-nunito leading-7 tracking-[-0.03em] mb-1'>
+                      <span className='text-sm md:text-base font-medium text-gray-900 font-nunito leading-7 tracking-[-0.03em] mb-1'>
                         {order.items[0]?.name || 'Food Item'}
                       </span>
                       {/* Item Price */}
-                      <span className='text-sm md:text-base font-extrabold text-[#0A0D12] font-nunito leading-7'>
+                      <span className='text-sm md:text-base font-extrabold text-gray-900 font-nunito leading-7'>
                         {order.items[0]?.quantity || 1} x{' '}
                         {formatCurrency(order.items[0]?.price || 0)}
                       </span>
@@ -575,11 +575,11 @@ const OrdersCard = () => {
                   {/* Total Info - Frame 12 */}
                   <div className='flex flex-col items-start p-0 flex-1 min-h-[60px] justify-center'>
                     {/* Total Label */}
-                    <span className='text-sm md:text-base font-medium text-[#0A0D12] font-nunito leading-7 tracking-[-0.03em] mb-1'>
+                    <span className='text-sm md:text-base font-medium text-gray-900 font-nunito leading-7 tracking-[-0.03em] mb-1'>
                       Total
                     </span>
                     {/* Total Amount */}
-                    <span className='text-base md:text-xl font-extrabold text-[#0A0D12] font-nunito leading-8'>
+                    <span className='text-base md:text-xl font-extrabold text-gray-900 font-nunito leading-8'>
                       {formatCurrency(order.total)}
                     </span>
                   </div>

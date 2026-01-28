@@ -64,11 +64,12 @@ const AddressCard = ({ address, phone, isLoading, onEdit }: AddressCardProps) =>
     <div className='flex flex-col gap-3 w-full'>
       <div className='flex flex-col items-start gap-1 w-full'>
         <div className='flex flex-row items-center gap-2'>
-          <div className='w-6 h-6 flex-shrink-0 relative'>
+          <div className='w-6 h-6 shrink-0 relative'>
             <Image
               src={locationLogo}
               alt="Location"
               fill
+              sizes="24px"
               className='object-contain'
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -84,7 +85,7 @@ const AddressCard = ({ address, phone, isLoading, onEdit }: AddressCardProps) =>
               }}
             />
           </div>
-          <h3 className='font-nunito font-extrabold text-base leading-[30px] text-[#0A0D12]'>
+          <h3 className='font-nunito font-extrabold text-base leading-[30px] text-gray-900'>
             Delivery Address
           </h3>
         </div>
@@ -97,10 +98,10 @@ const AddressCard = ({ address, phone, isLoading, onEdit }: AddressCardProps) =>
             </div>
           ) : address ? (
             <div className='space-y-1'>
-              <p className='font-nunito font-medium text-sm leading-7 text-[#0A0D12]'>
+              <p className='font-nunito font-medium text-sm leading-7 text-gray-900'>
                 {address}
               </p>
-              <p className='font-nunito font-medium text-sm leading-7 text-[#0A0D12]'>
+              <p className='font-nunito font-medium text-sm leading-7 text-gray-900'>
                 {phone || 'No phone number provided'}
               </p>
             </div>
@@ -127,7 +128,7 @@ const AddressCard = ({ address, phone, isLoading, onEdit }: AddressCardProps) =>
         className='flex flex-row justify-center items-center px-2 py-2 gap-2 w-[120px] h-9 border border-[#D5D7DA] rounded-full hover:bg-gray-50 transition-colors self-start'
         onClick={onEdit}
       >
-        <span className='font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-[#0A0D12]'>
+        <span className='font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-gray-900'>
           Change
         </span>
       </button>
@@ -143,12 +144,13 @@ interface CartItemCardProps {
 
 const CartItemCard = ({ item, onQuantityChange, onNavigateToRestaurant }: CartItemCardProps) => (
   <div className='flex flex-row items-center w-full h-[84px] gap-4'>
-    <div className='w-16 h-16 rounded-xl flex-shrink-0 relative'>
+    <div className='w-16 h-16 rounded-xl shrink-0 relative'>
       {item.imageUrl ? (
         <Image
           src={item.imageUrl}
           alt={item.name}
           fill
+          sizes="64px"
           className='object-cover rounded-xl'
           onError={(e) => {
             const target = e.target as HTMLImageElement;
@@ -171,24 +173,24 @@ const CartItemCard = ({ item, onQuantityChange, onNavigateToRestaurant }: CartIt
     </div>
 
     <div className='flex flex-col items-start flex-1 min-w-0'>
-      <div className='font-nunito font-medium text-sm leading-7 text-[#0A0D12] w-full truncate'>
+      <div className='font-nunito font-medium text-sm leading-7 text-gray-900 w-full truncate'>
         {item.name}
       </div>
-      <div className='font-nunito font-extrabold text-base leading-[30px] text-[#0A0D12]'>
+      <div className='font-nunito font-extrabold text-base leading-[30px] text-gray-900'>
         {formatPrice(item.price)}
       </div>
     </div>
 
-    <div className='flex flex-row items-center gap-3 md:gap-4 flex-shrink-0'>
+    <div className='flex flex-row items-center gap-3 md:gap-4 shrink-0'>
       <button
         onClick={() => onQuantityChange(item.id, -1)}
         className='flex flex-row justify-center items-center p-2 md:p-[6.5px] gap-1.5 md:gap-[6.5px] w-8 h-8 md:w-9 md:h-9 border border-[#D5D7DA] rounded-full hover:bg-gray-50 transition-colors touch-manipulation'
         type='button'
       >
-        <Minus className='w-4 h-4 md:w-[19.5px] md:h-[19.5px] text-[#0A0D12]' />
+        <Minus className='w-4 h-4 md:w-[19.5px] md:h-[19.5px] text-gray-900' />
       </button>
 
-      <span className='font-nunito font-semibold text-sm md:text-base leading-[30px] tracking-[-0.02em] text-[#0A0D12] min-w-[16px] md:min-w-[20px] text-center'>
+      <span className='font-nunito font-semibold text-sm md:text-base leading-[30px] tracking-[-0.02em] text-gray-900 min-w-[16px] md:min-w-[20px] text-center'>
         {item.quantity}
       </span>
 
@@ -218,7 +220,7 @@ const RestaurantGroup = ({ group, onQuantityChange, onNavigateToRestaurant }: Re
   <div className='flex flex-col gap-3 w-full'>
     <div className='flex flex-row justify-between items-center w-full h-10'>
       <div className='flex flex-row items-center gap-2'>
-        <div className='w-8 h-8 flex-shrink-0 relative'>
+        <div className='w-8 h-8 shrink-0 relative'>
           <Image
             src={restaurantIcon}
             alt={group.restaurantName}
@@ -239,16 +241,16 @@ const RestaurantGroup = ({ group, onQuantityChange, onNavigateToRestaurant }: Re
             }}
           />
         </div>
-        <h3 className='font-nunito font-bold text-base leading-[30px] tracking-[-0.02em] text-[#0A0D12]'>
+        <h3 className='font-nunito font-bold text-base leading-[30px] tracking-[-0.02em] text-gray-900'>
           {group.restaurantName}
         </h3>
       </div>
 
       <button
-        className='flex flex-row justify-center items-center px-6 py-2 gap-2 h-9 border border-[#D5D7DA] rounded-full hover:bg-gray-50 transition-colors flex-shrink-0'
+        className='flex flex-row justify-center items-center px-6 py-2 gap-2 h-9 border border-[#D5D7DA] rounded-full hover:bg-gray-50 transition-colors shrink-0'
         onClick={() => onNavigateToRestaurant(group.restaurantId)}
       >
-        <span className='font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-[#0A0D12]'>
+        <span className='font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-gray-900'>
           Add item
         </span>
       </button>
@@ -278,7 +280,7 @@ const PaymentMethodCard = ({ method, isSelected, onSelect }: PaymentMethodCardPr
     className='flex items-center gap-3 cursor-pointer w-full h-10 p-2 rounded-lg hover:bg-gray-50 transition-colors'
     onClick={() => onSelect(method.id)}
   >
-    <div className='w-10 h-10 border border-[#D5D7DA] rounded-lg flex items-center justify-center p-2 flex-shrink-0'>
+    <div className='w-10 h-10 border border-[#D5D7DA] rounded-lg flex items-center justify-center p-2 shrink-0'>
       <Image
         src={method.logo}
         alt={method.name}
@@ -299,11 +301,11 @@ const PaymentMethodCard = ({ method, isSelected, onSelect }: PaymentMethodCardPr
         }}
       />
     </div>
-    <span className='font-nunito font-normal text-sm leading-7 tracking-[-0.02em] text-[#0A0D12] flex-1'>
+    <span className='font-nunito font-normal text-sm leading-7 tracking-[-0.02em] text-gray-900 flex-1'>
       {method.name}
     </span>
     <div
-      className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
+      className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${
         isSelected ? 'bg-[#C12116]' : 'border-2 border-[#A4A7AE]'
       }`}
     >
@@ -323,43 +325,43 @@ interface PaymentSummaryProps {
 
 const PaymentSummary = ({ subtotal, deliveryFee, serviceFee, total, itemCount, onCheckout }: PaymentSummaryProps) => (
   <div className='flex flex-col items-start px-4 gap-3 w-full'>
-    <h3 className='font-nunito font-extrabold text-base leading-[30px] text-[#0A0D12] w-full'>
+    <h3 className='font-nunito font-extrabold text-base leading-[30px] text-gray-900 w-full'>
       Payment Summary
     </h3>
 
     <div className='space-y-3 w-full'>
       <div className='flex justify-between items-center w-full h-7'>
-        <span className='font-nunito font-medium text-sm leading-7 text-[#0A0D12]'>
+        <span className='font-nunito font-medium text-sm leading-7 text-gray-900'>
           Price ({itemCount} items)
         </span>
-        <span className='font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-[#0A0D12]'>
+        <span className='font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-gray-900'>
           {formatPrice(subtotal)}
         </span>
       </div>
 
       <div className='flex justify-between items-center w-full h-7'>
-        <span className='font-nunito font-medium text-sm leading-7 text-[#0A0D12]'>
+        <span className='font-nunito font-medium text-sm leading-7 text-gray-900'>
           Delivery Fee
         </span>
-        <span className='font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-[#0A0D12]'>
+        <span className='font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-gray-900'>
           {formatPrice(deliveryFee)}
         </span>
       </div>
 
       <div className='flex justify-between items-center w-full h-7'>
-        <span className='font-nunito font-medium text-sm leading-7 text-[#0A0D12]'>
+        <span className='font-nunito font-medium text-sm leading-7 text-gray-900'>
           Service Fee
         </span>
-        <span className='font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-[#0A0D12]'>
+        <span className='font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-gray-900'>
           {formatPrice(serviceFee)}
         </span>
       </div>
 
       <div className='flex justify-between items-center w-full h-8'>
-        <span className='font-nunito font-normal text-base leading-[30px] tracking-[-0.02em] text-[#0A0D12]'>
+        <span className='font-nunito font-normal text-base leading-[30px] tracking-[-0.02em] text-gray-900'>
           Total
         </span>
-        <span className='font-nunito font-extrabold text-base leading-[30px] text-[#0A0D12]'>
+        <span className='font-nunito font-extrabold text-base leading-[30px] text-gray-900'>
           {formatPrice(total)}
         </span>
       </div>
@@ -684,7 +686,7 @@ const CheckoutPage: React.FC = () => {
               <div className='flex flex-col items-end py-4 gap-4 w-full'>
                 {/* Payment Method Section */}
                 <div className='flex flex-col items-start px-4 w-full'>
-                  <h3 className='font-nunito font-extrabold text-base leading-[30px] text-[#0A0D12] w-full mb-4'>
+                  <h3 className='font-nunito font-extrabold text-base leading-[30px] text-gray-900 w-full mb-4'>
                     Payment Method
                   </h3>
 

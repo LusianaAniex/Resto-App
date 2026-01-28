@@ -51,7 +51,7 @@ const ReviewModal: React.FC<ReviewModalProps> = ({
         {/* Header - Frame 96 */}
         <div className='flex flex-row justify-between items-center p-0 gap-4 w-full h-9'>
           {/* Give Review Title */}
-          <div className='text-lg md:text-2xl font-extrabold text-[#0A0D12] font-nunito leading-9 flex-none'>
+          <div className='text-lg md:text-2xl font-extrabold text-gray-900 font-nunito leading-9 flex-none'>
             Give Review
           </div>
 
@@ -60,14 +60,14 @@ const ReviewModal: React.FC<ReviewModalProps> = ({
             onClick={handleClose}
             className='w-6 h-6 bg-none border-none cursor-pointer flex items-center justify-center flex-none'
           >
-            <X size={24} className='text-[#0A0D12]' />
+            <X size={24} className='text-gray-900' />
           </button>
         </div>
 
         {/* Rating Section - Frame 97 */}
         <div className='flex flex-col justify-center items-center p-0 w-full h-20'>
           {/* Give Rating Text */}
-          <div className='w-full h-8 font-nunito font-extrabold text-sm md:text-base leading-8 text-center text-[#0A0D12] mb-2'>
+          <div className='w-full h-8 font-nunito font-extrabold text-sm md:text-base leading-8 text-center text-gray-900 mb-2'>
             Give Rating
           </div>
 

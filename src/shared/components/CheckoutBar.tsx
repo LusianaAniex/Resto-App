@@ -42,7 +42,7 @@ const CheckoutBar: React.FC<CheckoutBarProps> = ({ onCheckout }) => {
     >
       {/* Frame 90 - Cart Summary */}
       <div
-        className='flex flex-col items-start px-0 gap-0.5 flex-none order-0 flex-grow-0'
+        className='flex flex-col items-start px-0 gap-0.5 flex-none order-0 grow-0'
         style={{
           width: '107px',
           height: '60px',
@@ -50,7 +50,7 @@ const CheckoutBar: React.FC<CheckoutBarProps> = ({ onCheckout }) => {
       >
         {/* Frame 89 - Item Count Row */}
         <div
-          className='flex flex-row items-center px-0 gap-1 flex-none order-0 flex-grow-0'
+          className='flex flex-row items-center px-0 gap-1 flex-none order-0 grow-0'
           style={{
             width: '69px',
             height: '28px',
@@ -58,7 +58,7 @@ const CheckoutBar: React.FC<CheckoutBarProps> = ({ onCheckout }) => {
         >
           {/* Shopping Bag Icon */}
           <div
-            className='flex-none order-0 flex-grow-0'
+            className='flex-none order-0 grow-0'
             style={{
               width: '20px',
               height: '20px',
@@ -69,6 +69,7 @@ const CheckoutBar: React.FC<CheckoutBarProps> = ({ onCheckout }) => {
               src={ShoppingBagIcon}
               alt='Shopping Bag'
               fill
+              sizes="20px"
               style={{
                 filter:
                   'brightness(0) saturate(100%) invert(8%) sepia(5%) saturate(2000%) hue-rotate(200deg) brightness(95%) contrast(95%)',
@@ -78,7 +79,7 @@ const CheckoutBar: React.FC<CheckoutBarProps> = ({ onCheckout }) => {
 
           {/* Item Count Text */}
           <div
-            className='font-nunito font-normal text-[#0A0D12] flex-none order-1 flex-grow-0'
+            className='font-nunito font-normal text-gray-900 flex-none order-1 grow-0'
             style={{
               width: '45px',
               height: '28px',
@@ -95,7 +96,7 @@ const CheckoutBar: React.FC<CheckoutBarProps> = ({ onCheckout }) => {
 
         {/* Total Price */}
         <div
-          className='font-nunito font-extrabold text-[#0A0D12] flex-none order-1 self-stretch flex-grow-0'
+          className='font-nunito font-extrabold text-gray-900 flex-none order-1 self-stretch grow-0'
           style={{
             width: '107px',
             height: '30px',
@@ -112,14 +113,14 @@ const CheckoutBar: React.FC<CheckoutBarProps> = ({ onCheckout }) => {
       {/* Checkout Button */}
       <button
         onClick={handleCheckout}
-        className='flex flex-row justify-center items-center px-2 gap-2 bg-[#C12116] rounded-full flex-none order-1 flex-grow-0'
+        className='flex flex-row justify-center items-center px-2 gap-2 bg-[#C12116] rounded-full flex-none order-1 grow-0'
         style={{
           width: '160px',
           height: '40px',
         }}
       >
         <span
-          className='font-nunito font-bold text-[#FDFDFD] flex-none order-0 flex-grow-0'
+          className='font-nunito font-bold text-[#FDFDFD] flex-none order-0 grow-0'
           style={{
             width: '59px',
             height: '28px',

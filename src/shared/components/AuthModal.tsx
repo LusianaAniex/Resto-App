@@ -197,7 +197,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
 
   return (
     <div
-      className='fixed inset-0 z-[999999] flex'
+      className='fixed inset-0 z-999999 flex'
       onClick={(e) => {
         // Only close when clicking on the backdrop
         if (e.target === e.currentTarget) {
@@ -220,6 +220,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
             src={leftImageModal}
             alt='Food'
             fill
+            sizes="50vw"
             className='object-cover'
             placeholder="blur"
             priority
@@ -241,17 +242,17 @@ const AuthModal: React.FC<AuthModalProps> = ({
                 alt='Foody Logo'
                 className='w-10 h-10'
               />
-              <span className='text-2xl font-extrabold text-[#0A0D12]'>
+              <span className='text-2xl font-extrabold text-gray-900'>
                 Foody
               </span>
             </div>
 
             {/* Welcome Text */}
             <div className='flex flex-col gap-1'>
-              <h1 className='text-2xl font-extrabold text-[#0A0D12]'>
+              <h1 className='text-2xl font-extrabold text-gray-900'>
                 Welcome Back
               </h1>
-              <p className='text-sm font-medium text-[#0A0D12]'>
+              <p className='text-sm font-medium text-gray-900'>
                 Good to see you again! Let's eat
               </p>
             </div>
@@ -278,7 +279,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
                 }}
                 className={`flex-1 h-10 rounded-xl flex items-center justify-center transition-all ${
                   mode === 'login'
-                    ? 'bg-white shadow-[0px_0px_20px_rgba(203,202,202,0.25)] text-[#0A0D12] font-bold'
+                    ? 'bg-white shadow-[0px_0px_20px_rgba(203,202,202,0.25)] text-gray-900 font-bold'
                     : 'text-[#535862] font-medium'
                 }`}
               >
@@ -306,7 +307,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
                 }}
                 className={`flex-1 h-10 rounded-xl flex items-center justify-center transition-all ${
                   mode === 'register'
-                    ? 'bg-white shadow-[0px_0px_20px_rgba(203,202,202,0.25)] text-[#0A0D12] font-bold'
+                    ? 'bg-white shadow-[0px_0px_20px_rgba(203,202,202,0.25)] text-gray-900 font-bold'
                     : 'text-[#535862] font-medium'
                 }`}
               >
@@ -475,7 +476,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
                   />
                   <label
                     htmlFor='rememberMe'
-                    className='text-sm font-medium text-[#0A0D12]'
+                    className='text-sm font-medium text-gray-900'
                   >
                     Remember Me
                   </label>
@@ -513,7 +514,7 @@ const AuthModal: React.FC<AuthModalProps> = ({
               <button
                 type='button'
                 onClick={switchMode}
-                className='text-sm text-[#535862] hover:text-[#0A0D12] transition-colors'
+                className='text-sm text-[#535862] hover:text-gray-900 transition-colors'
               >
                 {mode === 'login'
                   ? "Don't have an account? Register"

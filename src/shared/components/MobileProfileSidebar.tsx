@@ -78,6 +78,7 @@ const MobileProfileSidebar: React.FC<MobileProfileSidebarProps> = ({
                   src={userProfile.profilePicture}
                   alt='Profile'
                   fill
+                  sizes="36px"
                   className='object-cover rounded-full'
                   onError={() => setImageError(true)}
                   unoptimized
@@ -89,7 +90,7 @@ const MobileProfileSidebar: React.FC<MobileProfileSidebarProps> = ({
               )}
             </div>
             {/* User Name - John Doe */}
-            <span className='text-base font-bold text-[#0A0D12] font-nunito leading-[30px] tracking-[-0.02em] flex-none'>
+            <span className='text-base font-bold text-gray-900 font-nunito leading-[30px] tracking-[-0.02em] flex-none'>
               {userProfile?.name || 'User'}
             </span>
           </div>
@@ -105,9 +106,9 @@ const MobileProfileSidebar: React.FC<MobileProfileSidebarProps> = ({
               onClick={handleNavigateToAddress}
             >
               <div className='w-5 h-5 flex items-center justify-center flex-none'>
-                <MapPin className='w-5 h-5 text-[#0A0D12]' />
+                <MapPin className='w-5 h-5 text-gray-900' />
               </div>
-              <span className='text-sm font-medium text-[#0A0D12] font-nunito leading-7 flex-none'>
+              <span className='text-sm font-medium text-gray-900 font-nunito leading-7 flex-none'>
                 Delivery Address
               </span>
             </div>
@@ -133,7 +134,7 @@ const MobileProfileSidebar: React.FC<MobileProfileSidebarProps> = ({
               <div className='relative w-5 h-5 flex items-center justify-center flex-none'>
                 <Image src={logoutLogo} alt='Logout' width={20} height={20} />
               </div>
-              <span className='text-sm font-medium text-[#0A0D12] font-nunito leading-7 flex-none'>
+              <span className='text-sm font-medium text-gray-900 font-nunito leading-7 flex-none'>
                 Logout
               </span>
             </div>

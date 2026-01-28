@@ -29,7 +29,7 @@ const ShowMoreButton: React.FC<ShowMoreButtonProps> = ({
         size='lg'
         onClick={onToggle}
         disabled={disabled}
-        className='border border-[#D5D7DA] rounded-full px-2 py-2 md:px-8 md:py-3 text-sm md:text-base font-bold text-[#0A0D12] hover:bg-gray-50 w-40 md:w-auto h-10 md:h-auto'
+        className='border border-[#D5D7DA] rounded-full px-2 py-2 md:px-8 md:py-3 text-sm md:text-base font-bold text-gray-900 hover:bg-gray-50 w-40 md:w-auto h-10 md:h-auto'
       >
         {disabled ? (
           <div className='flex items-center gap-2'>

@@ -186,7 +186,7 @@ const ProfileCard: React.FC<ProfileCardProps> = () => {
     <>
       {/* Profile Title */}
       <h1
-        className='text-2xl md:text-3xl font-extrabold text-[#0A0D12] mb-4 md:mb-6 leading-9 md:leading-tight'
+        className='text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 md:mb-6 leading-9 md:leading-tight'
         style={{ fontFamily: 'Nunito' }}
       >
         Profile
@@ -277,7 +277,7 @@ const ProfileCard: React.FC<ProfileCardProps> = () => {
           {/* Name Row - Frame 53 */}
           <div className='flex flex-row justify-between items-center w-[329px] md:w-[484px] h-7 flex-none'>
             {/* Name Label */}
-            <span className='text-sm font-medium text-[#0A0D12] font-nunito leading-7 flex-none'>
+            <span className='text-sm font-medium text-gray-900 font-nunito leading-7 flex-none'>
               Name
             </span>
             {/* Name Value/Input */}
@@ -286,11 +286,11 @@ const ProfileCard: React.FC<ProfileCardProps> = () => {
                 type='text'
                 value={formData.name}
                 onChange={(e) => handleInputChange('name', e.target.value)}
-                className='h-7 font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-[#0A0D12] flex-1 text-right border border-gray-300 rounded px-2 bg-white'
+                className='h-7 font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-gray-900 flex-1 text-right border border-gray-300 rounded px-2 bg-white'
                 placeholder='Enter your name'
               />
             ) : (
-              <span suppressHydrationWarning className='h-7 font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-[#0A0D12] flex-1 text-right'>
+              <span suppressHydrationWarning className='h-7 font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-gray-900 flex-1 text-right'>
                 {isProfileLoading
                   ? 'Loading...'
                   : userProfile?.name || 'Johndoe'}
@@ -301,7 +301,7 @@ const ProfileCard: React.FC<ProfileCardProps> = () => {
           {/* Email Row - Frame 54 */}
           <div className='flex flex-row justify-between items-center w-[329px] md:w-[484px] h-7 flex-none'>
             {/* Email Label */}
-            <span className='text-sm font-medium text-[#0A0D12] font-nunito leading-7 flex-none'>
+            <span className='text-sm font-medium text-gray-900 font-nunito leading-7 flex-none'>
               Email
             </span>
             {/* Email Value/Input */}
@@ -310,11 +310,11 @@ const ProfileCard: React.FC<ProfileCardProps> = () => {
                 type='email'
                 value={formData.email}
                 onChange={(e) => handleInputChange('email', e.target.value)}
-                className='h-7 font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-[#0A0D12] flex-1 text-right border border-gray-300 rounded px-2 bg-white'
+                className='h-7 font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-gray-900 flex-1 text-right border border-gray-300 rounded px-2 bg-white'
                 placeholder='Enter your email'
               />
             ) : (
-              <span suppressHydrationWarning className='h-7 font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-[#0A0D12] flex-1 text-right'>
+              <span suppressHydrationWarning className='h-7 font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-gray-900 flex-1 text-right'>
                 {isProfileLoading
                   ? 'Loading...'
                   : userProfile?.email || 'johndoe@email.com'}
@@ -325,7 +325,7 @@ const ProfileCard: React.FC<ProfileCardProps> = () => {
           {/* Phone Row - Frame 55 */}
           <div className='flex flex-row justify-between items-center w-[329px] md:w-[484px] h-7 flex-none'>
             {/* Phone Label */}
-            <span className='text-sm font-medium text-[#0A0D12] font-nunito leading-7 flex-none'>
+            <span className='text-sm font-medium text-gray-900 font-nunito leading-7 flex-none'>
               Nomor Handphone
             </span>
             {/* Phone Value/Input */}
@@ -334,11 +334,11 @@ const ProfileCard: React.FC<ProfileCardProps> = () => {
                 type='tel'
                 value={formData.phone}
                 onChange={(e) => handleInputChange('phone', e.target.value)}
-                className='h-7 font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-[#0A0D12] flex-1 text-right border border-gray-300 rounded px-2 bg-white'
+                className='h-7 font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-gray-900 flex-1 text-right border border-gray-300 rounded px-2 bg-white'
                 placeholder='Enter your phone number'
               />
             ) : (
-              <span suppressHydrationWarning className='h-7 font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-[#0A0D12] flex-1 text-right'>
+              <span suppressHydrationWarning className='h-7 font-nunito font-bold text-sm leading-7 tracking-[-0.02em] text-gray-900 flex-1 text-right'>
                 {isProfileLoading
                   ? 'Loading...'
                   : userProfile?.phone || '081234567890'}

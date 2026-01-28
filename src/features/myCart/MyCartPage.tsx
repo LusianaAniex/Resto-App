@@ -118,12 +118,12 @@ const QuantityControls = ({ quantity, onDecrease, onIncrease, isMobile = false }
         onClick={onDecrease}
         className={`flex flex-row justify-center items-center border border-[#D5D7DA] rounded-full hover:bg-gray-50 transition-colors ${sizeClass}`}
       >
-        <Minus className={`${iconSizeClass} text-[#0A0D12]`} />
+        <Minus className={`${iconSizeClass} text-gray-900`} />
       </button>
 
       <span className={`font-nunito font-semibold ${
         isMobile ? 'text-sm min-w-[16px]' : 'text-lg min-w-[20px]'
-      } leading-[30px] tracking-[-0.02em] text-[#0A0D12] text-center`}>
+      } leading-[30px] tracking-[-0.02em] text-gray-900 text-center`}>
         {quantity}
       </span>
 
@@ -167,17 +167,17 @@ const CartItemCard = ({ item, onQuantityChange, isMobile = false }: CartItemCard
 
         {/* Item Details */}
         <div className='flex flex-col items-start flex-1 min-w-0'>
-          <div className='font-nunito font-medium text-sm leading-7 text-[#0A0D12] w-full truncate'>
+          <div className='font-nunito font-medium text-sm leading-7 text-gray-900 w-full truncate'>
             {item.name}
           </div>
-          <div className='font-nunito font-extrabold text-base leading-[30px] text-[#0A0D12]'>
+          <div className='font-nunito font-extrabold text-base leading-[30px] text-gray-900'>
             {formatPrice(item.price)}
           </div>
         </div>
       </div>
 
       {/* Quantity Controls */}
-      <div className='flex flex-row justify-end items-center flex-shrink-0'>
+      <div className='flex flex-row justify-end items-center shrink-0'>
         <QuantityControls
           quantity={item.quantity}
           onDecrease={handleDecrease}
@@ -217,7 +217,7 @@ const RestaurantGroup = ({
       }`}
       onClick={() => onNavigateToRestaurant(group.restaurantId)}
     >
-      <div className='w-8 h-8 flex-shrink-0 relative'>
+      <div className='w-8 h-8 shrink-0 relative'>
         <Image
           src={RESTAURANT_ICON}
           alt={group.restaurantName}
@@ -240,11 +240,11 @@ const RestaurantGroup = ({
       </div>
 
       <div className='flex flex-row items-center gap-1 flex-1'>
-        <span className='font-nunito font-bold text-base leading-[30px] tracking-[-0.02em] text-[#0A0D12]'>
+        <span className='font-nunito font-bold text-base leading-[30px] tracking-[-0.02em] text-gray-900'>
           {group.restaurantName}
         </span>
         {isMobile ? (
-          <ChevronDown className='w-5 h-5 text-[#0A0D12] transform rotate-[-90deg]' />
+          <ChevronDown className='w-5 h-5 text-gray-900 transform -rotate-90' />
         ) : (
           <ChevronRight className='w-6 h-6 text-gray-400' />
         )}
@@ -271,10 +271,10 @@ const RestaurantGroup = ({
 
           <div className='flex flex-col items-start gap-3 w-full'>
             <div className='flex flex-col items-start w-full'>
-              <div className='font-nunito font-medium text-sm leading-7 text-[#0A0D12] mb-1'>
+              <div className='font-nunito font-medium text-sm leading-7 text-gray-900 mb-1'>
                 Total
               </div>
-              <div className='font-nunito font-extrabold text-lg leading-8 tracking-[-0.02em] text-[#0A0D12]'>
+              <div className='font-nunito font-extrabold text-lg leading-8 tracking-[-0.02em] text-gray-900'>
                 {formatPrice(group.total)}
               </div>
             </div>
@@ -447,7 +447,7 @@ const MyCartPage: React.FC = () => {
       <div className='max-w-4xl mx-auto px-4 md:px-8 py-4 md:py-16'>
         {/* Mobile Layout */}
         <div className='md:hidden flex flex-col items-start px-0 gap-4 w-full max-w-[361px] mx-auto'>
-          <h1 className='font-nunito font-extrabold text-2xl leading-9 text-[#0A0D12] w-full'>
+          <h1 className='font-nunito font-extrabold text-2xl leading-9 text-gray-900 w-full'>
             My Cart
           </h1>
 

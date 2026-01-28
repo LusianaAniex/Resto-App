@@ -19,7 +19,7 @@ const DeleteReviewModal: React.FC<DeleteReviewModalProps> = ({
 
   return createPortal(
     <div
-      className='fixed top-0 left-0 w-screen h-screen bg-black/50 flex items-center justify-center z-[9999] p-4'
+      className='fixed top-0 left-0 w-screen h-screen bg-black/50 flex items-center justify-center z-9999 p-4'
       onClick={onClose}
     >
       <div
@@ -29,7 +29,7 @@ const DeleteReviewModal: React.FC<DeleteReviewModalProps> = ({
         {/* Header - Frame 96 */}
         <div className='flex flex-row justify-between items-center px-0 w-full h-9 md:h-9'>
           {/* Delete Review Title */}
-          <div className='font-nunito font-extrabold text-xl md:text-2xl leading-9 md:leading-9 text-[#0A0D12]'>
+          <div className='font-nunito font-extrabold text-xl md:text-2xl leading-9 md:leading-9 text-gray-900'>
             Delete Review
           </div>
 
@@ -50,7 +50,7 @@ const DeleteReviewModal: React.FC<DeleteReviewModalProps> = ({
           </div>
 
           {/* Warning Message */}
-          <div className='font-nunito font-semibold text-sm md:text-base leading-5 md:leading-5 text-center text-[#0A0D12] w-full'>
+          <div className='font-nunito font-semibold text-sm md:text-base leading-5 md:leading-5 text-center text-gray-900 w-full'>
             Are you sure you want to delete this review? This action cannot be
             undone.
           </div>
