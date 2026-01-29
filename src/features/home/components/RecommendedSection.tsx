@@ -53,7 +53,10 @@ const RecommendedSection: React.FC<RecommendedSectionProps> = ({
               <div className='hidden md:flex items-center gap-2'>
                 <span className='text-sm text-gray-600'>
                   Filtered by:{' '}
-                  {categories.find((cat) => cat.filter === selectedCategory)?.name}
+                  {
+                    categories.find((cat) => cat.filter === selectedCategory)
+                      ?.name
+                  }
                 </span>
                 <button
                   onClick={onClearFilter}
@@ -125,8 +128,8 @@ const RecommendedSection: React.FC<RecommendedSectionProps> = ({
                     searchQuery.trim()
                       ? restaurants.length // Show all search results
                       : isMobile
-                      ? mobileDisplayCount
-                      : restaurants.length
+                        ? mobileDisplayCount
+                        : restaurants.length
                   )
                   .map((restaurant, index) => (
                     <RestaurantCard

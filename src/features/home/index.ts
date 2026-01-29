@@ -4,7 +4,10 @@
  */
 
 // Components
-export { HeroSection } from './components/HeroSection';
-export { SearchBar } from './components/SearchBar';
+import HeroSection from './components/HeroSection';
+export { HeroSection };
+import SearchBar from './components/SearchBar';
+export { SearchBar };
 export { CategoryNav } from './components/CategoryNav';
-export { RecommendedSection } from './components/RecommendedSection';
+import RecommendedSection from './components/RecommendedSection';
+export { RecommendedSection };

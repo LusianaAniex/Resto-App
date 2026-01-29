@@ -22,7 +22,7 @@ const CATEGORY_ICONS: Record<string, string> = {
   'Salad': '🥗',
 };
 
-export function CategoryNav() {
+ export function CategoryNav() {
   const dispatch = useAppDispatch();
   const { data: categories, isLoading } = useCategoriesQuery();
   const selectedCategory = useAppSelector((state) => state.filters.selectedCategory);
