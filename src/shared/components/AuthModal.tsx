@@ -157,7 +157,18 @@ const AuthModal: React.FC<AuthModalProps> = ({
       let errorMessage = 'An error occurred';
 
       if (err && typeof err === 'object' && 'response' in err) {
-        const response = (err as any).response;
+        // Define a type for the response object
+        const errorObj = err as { 
+          response?: { 
+            data?: { 
+              message?: string; 
+              error?: string 
+            }; 
+            status?: number; 
+            statusText?: string; 
+          } 
+        };
+        const response = errorObj.response;
         console.log('Error response:', response);
 
         // Try to get the most detailed error message

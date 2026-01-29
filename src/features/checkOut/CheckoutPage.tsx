@@ -36,6 +36,19 @@ interface MidtransSnapResponse {
   snapToken: string;
 }
 
+interface ApiError {
+  response?: {
+    data?: {
+      message?: string;
+      errors?: any;
+    };
+    status?: number;
+  };
+  message?: string;
+  isAxiosError?: boolean;
+  status?: number;
+}
+
 const PAYMENT_METHODS = [
   { id: 'bni', name: 'Bank Negara Indonesia', logo: bniLogo },
   { id: 'bri', name: 'Bank Rakyat Indonesia', logo: briLogo },
@@ -606,10 +619,10 @@ const CheckoutPage: React.FC = () => {
         errorKeys: Object.keys((error as object) || {}),
         errorString: String(error),
         errorJSON: JSON.stringify(error, null, 2),
-        isAxiosError: (error as any)?.isAxiosError,
+        isAxiosError: (error as ApiError)?.isAxiosError,
         message: (error as Error)?.message,
-        status: (error as any)?.status,
-        response: (error as any)?.response,
+        status: (error as ApiError)?.status,
+        response: (error as ApiError)?.response,
       });
 
       // Network / Offline Check
@@ -620,7 +633,7 @@ const CheckoutPage: React.FC = () => {
 
       // Network / CORS Error (Status 0 or "Network Error")
       if (
-        (error as any)?.status === 0 ||
+        (error as ApiError)?.status === 0 ||
         (error as Error)?.message === 'Network Error' ||
         ((error as Error)?.message && (error as Error)?.message.includes('Failed to fetch'))
       ) {
@@ -631,7 +644,7 @@ const CheckoutPage: React.FC = () => {
       }
 
       // Authentication Error
-      if ((error as any)?.status === 401) {
+      if ((error as ApiError)?.status === 401) {
         alert('Session expired. Please log in again.');
         if (typeof window !== 'undefined') {
           localStorage.removeItem('token');
@@ -642,12 +655,12 @@ const CheckoutPage: React.FC = () => {
       }
 
       // Bad Request
-      if ((error as any)?.status === 400) {
+      if ((error as ApiError)?.status === 400) {
         const serverMessage =
-          (error as any)?.response?.data?.message ||
+          (error as ApiError)?.response?.data?.message ||
           (error as Error)?.message ||
           'Invalid order information.';
-        const validationErrors = (error as any)?.response?.data?.errors;
+        const validationErrors = (error as ApiError)?.response?.data?.errors;
 
         console.error('Validation errors:', validationErrors);
 

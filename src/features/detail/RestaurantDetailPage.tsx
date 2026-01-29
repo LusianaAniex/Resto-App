@@ -37,7 +37,7 @@ const RestaurantDetailPage: React.FC = () => {
   const id = params?.id as string | undefined;
   const router = useRouter();
   const dispatch = useDispatch();
-  const authContext = useAuth() as any;
+  const authContext = useAuth();
   const user = authContext?.user;
   const { latitude, longitude } = useGeolocation();
   const cartItems = useSelector((state: RootState) => state.cart.items);
